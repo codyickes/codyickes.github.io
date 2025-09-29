@@ -64,7 +64,7 @@ async function getToken() {
     }),
   }
 
-  const body = await fetch(url, payload);
+  const body = await fetch(tokenUrl, payload);
   const response = await body.json();
 
   return response.access_token
