@@ -4,7 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Spotify Exporter</title>
+    <script async src="spotify-auth.js"></script>
+    <script>
+      tokenBtn = document.getElementById("token")
+      tokenBtn.onclick = function (event) {
+        const token = await getToken()
+        document.getElementById("output").innerHTML = token
+      }
+    </script>
   </head>
   <body>
+    <input id="auth" type="button" value="Authorize access to Spotify" onclick="requestUserAuth();" />
+    <input id="token" type="button" value="Get and show token" />
+    <p id="output"></p>
   </body>
 </html>
