@@ -8,12 +8,12 @@
   </head>
   <body>
     <input id="auth" type="button" value="Authorize access to Spotify" onclick="requestUserAuth();" />
-    <input id="token" type="button" value="Get and show token" />
+    <input id="token" type="button" value="Get and show profile JSON" />
     <script>
       tokenBtn = document.getElementById("token")
       tokenBtn.onclick = async function (event) {
         const token = await getToken()
-        document.getElementById("output").innerHTML = token
+        document.getElementById("output").innerHTML = await fetchProfile(token)
       }
     </script>
     <p id="output"></p>
