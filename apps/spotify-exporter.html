@@ -14,7 +14,8 @@
       tokenBtn = document.getElementById("token")
       tokenBtn.onclick = async function (event) {
         const token = await getToken()
-        document.getElementById("output").innerHTML = await fetchProfile(token)
+        const profile = await fetchProfile(token)
+        document.getElementById("output").innerHTML = profile.display_name
       }
     </script>
     <p id="output"></p>
