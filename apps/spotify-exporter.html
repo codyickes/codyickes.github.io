@@ -7,7 +7,7 @@
     <script async src="spotify-auth.js"></script>
     <script>
       tokenBtn = document.getElementById("token")
-      tokenBtn.onclick = function (event) {
+      tokenBtn.onclick = async function (event) {
         const token = await getToken()
         document.getElementById("output").innerHTML = token
       }
