@@ -8,16 +8,31 @@
     <script async src="spotify-requests.js"></script>
   </head>
   <body>
-    <input id="auth" type="button" value="Authorize access to Spotify" onclick="requestUserAuth();" />
-    <input id="token" type="button" value="Get and show profile JSON" />
-    <script>
-      tokenBtn = document.getElementById("token")
-      tokenBtn.onclick = async function (event) {
-        const token = await getToken()
-        const profile = await fetchProfile(token)
-        document.getElementById("output").innerHTML = profile.display_name
-      }
-    </script>
-    <p id="output"></p>
+    <div id="main"></div>
+    <div id="oauth"></div>
+
+    <template id="login">
+      <h1>Welcome to the Spotify Exporter</h1>
+      <button id="login-button" data-bind-onclick="loginWithSpotifyClick();">Log in with Spotify</button>
+    </template>
+
+    <template id="logged-in-template">
+      <h1>Logged in</h1>
+    </template>
+
+    <template id="oauth-template">
+      <h2>oAuth info</h2>
+      <table>
+        <tr>
+          <td>Access token</td>
+          <td data-bind="refresh-token"></td>
+        </tr>
+        <tr>
+          <td>Expiration at</td>
+          <td data-bind="expires">${getExpirationDate(expires_in)}</td>
+        </tr>
+      </table>
+
+    <script src="spotify-auth.js" type="module"></script>
   </body>
 </html>
